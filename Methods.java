@@ -4,7 +4,7 @@ public class Methods {
 	static int co = 0;
     static int ch = 0;
 
-	public static void sortinsert(int[] array) {
+	public static int sortInsert(int[] array) {
         int i, j, newValue;
         for (i = 1; i < array.length; i++) {
             newValue = array[i];
@@ -16,11 +16,13 @@ public class Methods {
             }
             ch++;
             array[j] = newValue;
-            System.out.print(array[j]);
+        }
+        for (i = 0; i < array.length; i++) {
+        	return array[i];
         }
     }
 
-	public static void sortselect(int[] arr){
+	public static int sortSelect(int[] arr){
 	    for (int i = 0; i < arr.length; i++) {
 	        int min = arr[i];
 	        int min_i = i; 
@@ -35,32 +37,23 @@ public class Methods {
 	            arr[i] = arr[min_i];
 	            arr[min_i] = tmp;
 	        }
-	        System.out.print(arr[i]);
+	        return arr[i];
 	     }
 	}
 
 	public static void main(String[] args) {
+		
 		int[] arr = new int[10];
 		Scanner sc = new Scanner(System.in);
 		for (int i = 0; i < 10; i++) {
 			arr[i] = sc.nextInt();
 		}
-		int[] notDivid2 = new int[5];
-		int[] divid2 = new int[5];
-		int j = 0;
+		
+		int[] notDiv2 = new int[5];
+		int[] div2 = new int[5];
 		for (int i = 0; i < 10; i++) {
-			if (i % 2 == 0) {
-				divid2[j] = arr[i];
-				j++;
-			}
-			else {
-				notDivid2[j] = arr[i];
-				j++;
-			}
+			
 		}
-		for (int i = 0; i < 5; i++) {
-			sortinsert(divid2[i]);
-			sortselect(notDivid2[i]);
-		}
+
 	}
 }
