@@ -4,7 +4,7 @@ public class Methods {
 	static int co = 0;
     static int ch = 0;
 
-	public static int sortInsert(int[] array) {
+	public static int[] sortInsert(int[] array) {
         int i, j, newValue;
         for (i = 1; i < array.length; i++) {
             newValue = array[i];
@@ -17,43 +17,58 @@ public class Methods {
             ch++;
             array[j] = newValue;
         }
-        for (i = 0; i < array.length; i++) {
-        	return array[i];
-        }
+        return array;
     }
 
-	public static int sortSelect(int[] arr){
-	    for (int i = 0; i < arr.length; i++) {
-	        int min = arr[i];
+	public static int[] sortSelect(int[] array) {
+	    for (int i = 0; i < array.length; i++) {
+	        int min = array[i];
 	        int min_i = i; 
-	        for (int j = i+1; j < arr.length; j++) {
-	            if (arr[j] < min) {
-	                min = arr[j];
+	        for (int j = i+1; j < array.length; j++) {
+	            if (array[j] < min) {
+	                min = array[j];
 	                min_i = j;
 	            }
 	        }
 	        if (i != min_i) {
-	            int tmp = arr[i];
-	            arr[i] = arr[min_i];
-	            arr[min_i] = tmp;
+	            int tmp = array[i];
+	            array[i] = array[min_i];
+	            array[min_i] = tmp;
 	        }
-	        return arr[i];
 	     }
+	     return array;
 	}
 
 	public static void main(String[] args) {
-		
-		int[] arr = new int[10];
+		int n = 10;
+		int[] arr = new int[n];
 		Scanner sc = new Scanner(System.in);
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < n; i++) {
 			arr[i] = sc.nextInt();
+		}			
+
+		/** DIVIDING ARR 
+		*/
+		int[] notDiv2 = new int[n / 2];
+		int[] div2 = new int[n / 2];
+		for (int i = 0; i < n; i+=2){
+			div2[i / 2] = arr[i];
 		}
-		
-		int[] notDiv2 = new int[5];
-		int[] div2 = new int[5];
-		for (int i = 0; i < 10; i++) {
-			
+		for (int i = 1; i < n; i+=2){
+			notDiv2[i / 2] = arr[i];
 		}
+		div2 = sortInsert(div2);
+		notDiv2 = sortSelect(notDiv2);
+
+		/** OUTPUT
+		*/
+		int k = n / 2 + n % 2;
+		System.arraycopy(div2, 0, arr, 0, k);
+		System.arraycopy(notDiv2, 0, arr, k, k);	
+		arr = sortInsert(arr);
+		for (int i = 0; i < n; i++) {
+			System.out.print(arr[i] + " ");
+		}	
 
 	}
 }
