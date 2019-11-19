@@ -40,7 +40,20 @@ public class Methods {
 	}
 
 	public static void main(String[] args) {
-		int n = 10;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number of elements in the array");
+		final int arraySize = sc.nextInt();
+		int[] a = new int[arraySize];
+		System.out.println("Enter array elements with a space:");
+		for (int i = 0; i < a.length; i++) {
+            a[i] = sc.nextInt();
+        }
+		Methods.sortSelect(a);
+		for (int i = 0; i < a.length - 1; i++) {
+			System.out.print(a[i] + ", ");
+		}
+		System.out.println(a[a.length - 1]);
+		/*int n = 10;
 		int[] arr = new int[n];
 		Scanner sc = new Scanner(System.in);
 		for (int i = 0; i < n; i++) {
@@ -49,6 +62,7 @@ public class Methods {
 
 		/** DIVIDING ARR 
 		*/
+		/*
 		int[] notDiv2 = new int[n / 2];
 		int[] div2 = new int[n / 2];
 		for (int i = 0; i < n; i+=2){
@@ -62,13 +76,14 @@ public class Methods {
 
 		/** OUTPUT
 		*/
+		/*
 		int k = n / 2 + n % 2;
 		System.arraycopy(div2, 0, arr, 0, k);
 		System.arraycopy(notDiv2, 0, arr, k, k);	
 		arr = sortInsert(arr);
 		for (int i = 0; i < n; i++) {
 			System.out.print(arr[i] + " ");
-		}	
-
+		}
+		*/
 	}
 }
